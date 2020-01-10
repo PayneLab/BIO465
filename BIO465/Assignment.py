@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class Assignment:
     """
-    The Assignment class is a wrapper for labs and homework, it is to give them their attributes
+    The Assignment class is a parent class for labs and homework, it is to give them their attributes
     and given them common methods
     """
     def __init__(self, title: str, body: str, instructions: str, number: int):
@@ -12,18 +12,17 @@ class Assignment:
         self.instructions = instructions
         self.number = number
 
-    @abstractmethod
-    def get_title(self):
-        pass
+    def get_title(self) -> str:
+        return self.title
 
-    @abstractmethod
-    def get_body(self):
-        pass
+    def get_body(self) -> str:
+        return self.body
 
-    @abstractmethod
-    def get_instructions(self):
-        pass
+    def get_instructions(self) -> str:
+        return self.instructions
 
-    @abstractmethod
-    def get_number(self):
-        pass
+    def get_number(self) -> int:
+        return self.number
+
+    def __str__(self) -> str:
+        return f"Title:{self.title}\nBody:{self.body}\nInstructions:{self.instructions}\nNumber:{self.number}"

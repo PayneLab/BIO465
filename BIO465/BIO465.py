@@ -9,11 +9,11 @@ class BIO465:
         self.homeworks = []
         self.labs = []
 
-    """ retrieves a list of lab objects from the instantiated class """
+    """ retrieves a list of Lab objects from the instantiated class """
     def get_labs(self) -> list:
         return self.labs
 
-    """ retrieves a list of homework objects from the instantiated class """
+    """ retrieves a list of Homework objects from the instantiated class """
     def get_homeworks(self) -> list:
         return self.homeworks
 
