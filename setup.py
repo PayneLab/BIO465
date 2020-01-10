@@ -10,11 +10,13 @@ setup(
     author='Samuel Payne, Thomas Molina, Teancum',  # Type in your name
     author_email='samuel.payne@byu.edu',  # Type in your E-Mail
     url='https://github.com/user/PayneLab/BIO465',  # Provide either the link to your github or to your website
-    download_url='https://github.com/user/reponame/archive/v_01.tar.gz',  # I explain this later on
+    download_url='https://github.com/PayneLab/BIO465/archive/v_01.tar.gz',  # I explain this later on
     keywords=['Bioinformatics', 'BIO465', 'BYU', 'CPTAC', 'BIOLOGY'],  # Keywords that define your package best
     install_requires=[  # I get to this in a second
         'validators',
         'beautifulsoup4',
+        'numpy',
+        'pandas',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
