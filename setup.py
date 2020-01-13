@@ -7,7 +7,7 @@ setup(
     license='MIT',  # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     description='Class content for students at BYU who are taking BIO 465 - Capstone in Bioinformatics',
     # Give a short description about your library
-    author='Samuel Payne, Thomas Molina, Teancum',  # Type in your name
+    author='Samuel Payne, Thomas Molina, Teancum Paquette',  # Type in your name
     author_email='samuel.payne@byu.edu',  # Type in your E-Mail
     url='https://github.com/user/PayneLab/BIO465',  # Provide either the link to your github or to your website
     download_url='https://github.com/PayneLab/BIO465/archive/v_01.tar.gz',  # I explain this later on
