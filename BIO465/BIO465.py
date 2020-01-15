@@ -32,7 +32,7 @@ class BIO465:
 
     def get_lab(self, lab_number: int) -> pandas.array:
         # query box to get the file
-        # read the file
+        # read the file into file object
         # use pandas to convert to data frame
         # return data frame
         pass
