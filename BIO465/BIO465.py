@@ -54,8 +54,3 @@ class BIO465:
         return df
 
 
-"""
-if __name__ == "__main__":
-    b = BIO465()
-    print(b.get_lab(0))
-"""
