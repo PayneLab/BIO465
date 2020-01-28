@@ -3,4 +3,7 @@ setup.cfg
 setup.py
 BIO465/Assignment.py
 BIO465/BIO465.py
+BIO465/Homework.py
+BIO465/Lab.py
 BIO465/__init__.py
+BIO465/files.py

@@ -54,3 +54,8 @@ class BIO465:
         return df
 
 
+if __name__ == "__main__":
+    b = BIO465()
+    df = b.get_lab(0)
+    i = 5
+    print(df)
