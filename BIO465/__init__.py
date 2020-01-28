@@ -1,5 +1,2 @@
-from . import BIO465
-from . import Assignment
-from . import Lab
-from . import Homework
-from BIO465 import BIO465
+from BIO465.Assignment import Assignment as Assignment
+from BIO465 import BIO465 as BIO465
