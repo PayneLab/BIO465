@@ -57,5 +57,13 @@ class BIO465:
 if __name__ == "__main__":
     b = BIO465()
     df = b.get_lab(0)
-    i = 5
+    df_oxidation = [col.split('_')[0] for col in df if col.startswith("O2") or col.startswith("An")]
+    '''
+    plate_type = temp_cols[0]
+    time_location = temp_cols[1].str.split('.', n=1, expand=True)
+    df = df.assign(**{"oxidation": plate_type, "time": time_location[0], "plate": time_location[1]})
+    df = df.set_index(["oxidation", "time", "plate"])
+    '''
+    df.sort_index()
+    df.transpose()
     print(df)
