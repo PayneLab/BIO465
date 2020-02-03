@@ -51,24 +51,23 @@ class BIO465:
 
         df = pd.read_excel(open(xl, 'rb'))
         os.remove('./' + xl)
+        if lab_number == 0:
+            df = df.drop(columns=["Min_MSGF", "Peptides", "Ref1", "Ref2", "Ref3", "Ref4", "Spectra"])
+            df = df.set_index(["Protein"])
+            df = df.transpose()
+            df = df.reset_index()
+            temp_cols = df["index"].str.split('_', n=1, expand=True)
+            plate_type = temp_cols[0]
+            time_plate = temp_cols[1].str.split('.', n=1, expand=True)
+            df = df.assign(oxidation=plate_type, time=time_plate[0], plate=time_plate[1])
+            df = df.set_index(["oxidation", "time", "plate"])
+            df = df.sort_index()
+            df = df.transpose()
         return df
 
 
 if __name__ == "__main__":
     b = BIO465()
-    df = b.get_lab(0)
 
     df_oxidation = [col.split('_')[0] for col in df if col.startswith("O2") or col.startswith("An")]
 
-    df = df.drop(columns=["Min_MSGF", "Peptides", "Ref1", "Ref2", "Ref3", "Ref4", "Spectra"])
-    df = df.set_index(["Protein"])
-    df = df.transpose()
-    df = df.reset_index()
-    temp_cols = df["index"].str.split('_', n=1, expand=True)
-    plate_type = temp_cols[0]
-    time_plate = temp_cols[1].str.split('.', n=1, expand=True)
-    df = df.assign(oxidation=plate_type, time=time_plate[0], plate=time_plate[1])
-    df = df.set_index(["oxidation", "time", "plate"])
-    df = df.sort_index()
-    df = df.transpose()
-    print(df)
