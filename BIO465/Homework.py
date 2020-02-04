@@ -1,4 +1,4 @@
-from BIO465 import Assignment
+from BIO465.BIO465 import Assignment
 import pandas
 
 

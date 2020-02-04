@@ -1,6 +1,8 @@
 import pandas as pd
 import requests
 import os
+import BIO465.BIO465.Assignment
+import BIO465.BIO465.Homework
 
 
 class BIO465:
