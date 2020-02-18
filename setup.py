@@ -17,6 +17,7 @@ setup(
         'beautifulsoup4',
         'numpy',
         'pandas',
+        'setuptools', 'requests'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
