@@ -82,4 +82,3 @@ class BIO465:
 if __name__ == "__main__":
     b = BIO465()
     df = b.get_lab("bacterial growth")
-    # df_oxidation = [col.split('_')[0] for col in df if col.startswith("O2") or col.startswith("An")]
