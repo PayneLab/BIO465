@@ -13,13 +13,13 @@ class BIO465:
         self.dataframes = []
         self.homeworks = []
         self.labs = []
-        self.lab_links = {'Bacterial Growth': "https://byu.box.com/shared/static/b0gn4i6v4h9a4owilv8of5m6x5tj82u7.xlsx",
-                          'RNA Seq': "https://byu.box.com/shared/static/k5mdefkiqkj4bm9umd8naiaq20p1tpkk.txt",
-                          'Cancer Types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
+        self.lab_links = {'bacterial growth': "https://byu.box.com/shared/static/b0gn4i6v4h9a4owilv8of5m6x5tj82u7.xlsx",
+                          'rna seq': "https://byu.box.com/shared/static/k5mdefkiqkj4bm9umd8naiaq20p1tpkk.txt",
+                          'cancer types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
 
     """Queries box to get whatever link is within the lab_links parameter"""
     def get_data_frame(self, lab_string: str, file_type: str):
-        file = f'file{file_type}'
+        file = f'./file{file_type}'
 
         lab_link = self.lab_links[lab_string]
         response = requests.get(lab_link, allow_redirects=True, stream=True)  # query box to get the file
@@ -57,7 +57,7 @@ class BIO465:
         df = pd.read_excel(open(xl, 'rb'))
         os.remove('./' + xl)
         """
-        if lab_string == 'Bacterial Growth':
+        if lab_string == 'bacterial growth':
             file_type = ".xlsx"
             df = self.get_data_frame(lab_string, file_type)
             df = df.drop(columns=["Min_MSGF", "Peptides", "Ref1", "Ref2", "Ref3", "Ref4", "Spectra"])
@@ -81,4 +81,5 @@ class BIO465:
 
 if __name__ == "__main__":
     b = BIO465()
+    df = b.get_lab("bacterial growth")
     # df_oxidation = [col.split('_')[0] for col in df if col.startswith("O2") or col.startswith("An")]
