@@ -16,6 +16,15 @@ class BIO465:
         self.lab_links = {'bacterial growth': "https://byu.box.com/shared/static/b0gn4i6v4h9a4owilv8of5m6x5tj82u7.xlsx",
                           'rna seq': "https://byu.box.com/shared/static/k5mdefkiqkj4bm9umd8naiaq20p1tpkk.txt",
                           'cancer types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
+        # TODO make comments based on the markdown
+        self.hints = {
+            '1a': 'string of hints',
+            '1b': 'string of hints',
+            '1c': 'string of hints',
+        }
+        self.answer_links = {
+            '1': 'link',
+        }
 
     """Queries box to get whatever link is within the lab_links parameter"""
     def get_data_frame(self, lab_string: str, file_type: str):
@@ -77,6 +86,18 @@ class BIO465:
             file_type = ".txt"
             df = self.get_data_frame(lab_string, file_type)
         return df
+
+    def hint(self, lab_string, problem_number, sub_problem=''):
+        hint_string = ""
+        if lab_string == "bacterial growth":
+            if problem_number ==
+            hint_string = ""
+            pass #TODO insert code for getting a hint
+        if lab_string == "rna seq":
+            pass #TODO insert code for getting a hint
+        if lab_string == "rna seq":
+            pass #TODO insert code for getting a hint
+        print(hint_string)
 
 
 if __name__ == "__main__":
