@@ -17,13 +17,25 @@ class BIO465:
                           'rna seq': "https://byu.box.com/shared/static/k5mdefkiqkj4bm9umd8naiaq20p1tpkk.txt",
                           'cancer types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
         # TODO make comments based on the markdown
-        self.hints = {
+        self.growth_hints = {
             '1a': 'string of hints',
             '1b': 'string of hints',
             '1c': 'string of hints',
+            '1d': 'string of hints',
+            '2a': 'string of hints',
+            '2b': 'string of hints',
+            '2c': 'string of hints',
+            '3': 'string of hints'
         }
-        self.answer_links = {
-            '1': 'link',
+        self.growth_answers = {
+            '1a': 'string of answers',
+            '1b': 'string of answers',
+            '1c': 'string of answers',
+            '1d': 'string of answers',
+            '2a': 'string of answers',
+            '2b': 'string of answers',
+            '2c': 'string of answers',
+            '3': 'string of answers'
         }
 
     """Queries box to get whatever link is within the lab_links parameter"""
@@ -87,19 +99,31 @@ class BIO465:
             df = self.get_data_frame(lab_string, file_type)
         return df
 
-    def hint(self, lab_string, problem_number, sub_problem=''):
+    def reveal_hint(self, lab_string, problem_number):
         hint_string = ""
         if lab_string == "bacterial growth":
-            if problem_number ==
-            hint_string = ""
-            pass #TODO insert code for getting a hint
+            hint_string = self.growth_hints[problem_number]
         if lab_string == "rna seq":
-            pass #TODO insert code for getting a hint
+            print("coming soon...")
+            pass  # TODO insert code for getting a hint
         if lab_string == "rna seq":
-            pass #TODO insert code for getting a hint
+            print("coming soon...")
+            pass  # TODO insert code for getting a hint
         print(hint_string)
+
+    def reveal_answer(self, lab_string, problem_number):
+        answer_string = ""
+        if lab_string == "bacterial growth":
+            answer_string = self.growth_answers[problem_number]
+        if lab_string == "rna seq":
+            print("coming soon...")
+            pass  # TODO insert code for getting a answer
+        if lab_string == "rna seq":
+            print("coming soon...")
+            pass  # TODO insert code for getting a answer
+        print(answer_string)
 
 
 if __name__ == "__main__":
     b = BIO465()
-    df = b.get_lab("bacterial growth")
+    # df = b.get_lab("bacterial growth")
