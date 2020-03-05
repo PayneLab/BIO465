@@ -39,7 +39,6 @@ class BIO465:
 
         df = pd.read_excel(open(file, 'rb'))
         os.remove('./' + file)
-
         return df
 
     def get_lab(self, lab_string: str) -> pd.array:
@@ -54,18 +53,6 @@ class BIO465:
         if lab_string not in self.lab_links.keys():
             print(error_message)
             return pd.array([])
-        """
-        lab_link = self.lab_links[lab_string]
-        response = requests.get(lab_link, allow_redirects=True, stream=True)  # query box to get the file
-        xl = "lab.xlsx"
-        with open(xl, "wb") as xl_file:
-            for chunk in response.iter_content(chunk_size=1024):
-                if chunk:
-                    xl_file.write(chunk)
-
-        df = pd.read_excel(open(xl, 'rb'))
-        os.remove('./' + xl)
-        """
         if lab_string == 'bacterial growth':
             file_type = ".xlsx"
             df = self.get_data_frame(lab_string, file_type)
@@ -76,13 +63,13 @@ class BIO465:
             temp_cols = df["index"].str.split('_', n=1, expand=True)
             plate_type = temp_cols[0]
             time_plate = temp_cols[1].str.split('.', n=1, expand=True)
-            df = df.assign(Experimental_Condition=plate_type, Time_Point=time_plate[0], Plate=time_plate[1])
-            df = df.set_index(["Experimental Condition", "Time Point", "Replicate"])
+            df = df.assign(Experimental_Condition=plate_type, Time_Point=time_plate[0], Replicate=time_plate[1])
+            df = df.set_index(["Experimental_Condition", "Time_Point", "Replicate"])
             df = df.sort_index().transpose()
-        if lab_string == 'RNA Seq':
+        if lab_string == 'rna seq':
             file_type = ".txt"
             df = self.get_data_frame(lab_string, file_type)
-        if lab_string == 'Cancer Types':
+        if lab_string == 'cancer types':
             file_type = ".txt"
             df = self.get_data_frame(lab_string, file_type)
         return df
