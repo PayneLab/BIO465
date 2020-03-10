@@ -127,4 +127,3 @@ class BIO465:
 if __name__ == "__main__":
     b = BIO465()
     # df = b.get_lab("bacterial growth")
-    # comment
