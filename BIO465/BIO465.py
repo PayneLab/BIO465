@@ -18,7 +18,7 @@ class BIO465:
                           'cancer types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
         # TODO make comments based on the markdown
         self.growth_hints = {
-            '1a': 'string of hints',
+            '1a': 'log all the data first and then do the standard deviation',
             '1b': 'string of hints',
             '1c': 'string of hints',
             '1d': 'string of hints',
@@ -28,8 +28,14 @@ class BIO465:
             '3': 'string of hints'
         }
         self.growth_answers = {
-            '1a': 'string of answers',
-            '1b': 'string of answers',
+            '1a': 'experimental_condition, timeframe = \'O2\',\'T1\' \n '
+                  'df_new = df[experimental_condition][timeframe] \n'
+                  'sd = np.log(df_new.std(axis=1)) \n'
+                  'avg = np.log(df_new.mean(axis=1)) \n'
+                  'df_new[\'mean\'] = avg \n'
+                  'df_new[\'standard_deviation\'] = sd \n'
+                  'df_new',
+            '1b': 'standard_deviation_plot = seaborn.distplot(sd)',
             '1c': 'string of answers',
             '1d': 'string of answers',
             '2a': 'string of answers',
