@@ -18,12 +18,13 @@ class BIO465:
                           'cancer types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
         # TODO make comments based on the markdown
         self.growth_hints = {
-            '1a': 'Take the mean and SD first and then log transform them',
+            '1a': 'Create new data frame from the O2 and T1 indices in the multi index \n'
+                  'Take the mean and SD first and then log transform them',
             '1b': 'Put your data frame into seaborn\'s \".distplot(df)\" function \n'
                   'mean of standard deviations \n'
                   'standard deviation of standard deviation \n'
                   '95% of data lies within 1.97 standard deviations above the mean',
-            '1c': 'string of hints',
+            '1c': 'using the \".axvline\" function will allow you to place a vertical line in the distribution plot',
             '1d': 'string of hints',
             '2a': 'string of hints',
             '2b': 'string of hints',
