@@ -18,8 +18,11 @@ class BIO465:
                           'cancer types': "https://byu.box.com/shared/static/u3czp6p3q76x2nh0x7rmiw8il2751ehk.txt"}
         # TODO make comments based on the markdown
         self.growth_hints = {
-            '1a': 'log all the data first and then do the standard deviation',
-            '1b': 'string of hints',
+            '1a': 'Take the mean and SD first and then log transform them',
+            '1b': 'Put your data frame into seaborn\'s \".distplot(df)\" function \n'
+                  'mean of standard deviations \n'
+                  'standard deviation of standard deviation \n'
+                  '95% of data lies within 1.97 standard deviations above the mean',
             '1c': 'string of hints',
             '1d': 'string of hints',
             '2a': 'string of hints',
@@ -35,10 +38,22 @@ class BIO465:
                   'df_new[\'mean\'] = avg \n'
                   'df_new[\'standard_deviation\'] = sd \n'
                   'df_new',
-            '1b': 'standard_deviation_plot = seaborn.distplot(sd)',
-            '1c': 'string of answers',
-            '1d': 'string of answers',
-            '2a': 'string of answers',
+            '1b': 'standard_deviation_plot = seaborn.distplot(sd) \n'
+                  'mean = sd.mean() \n'
+                  'sd_of_sd = sd.std() \n'
+                  'z_score = 1.97 \n'
+                  'threshold = z_score * sd_of_sd \n'
+                  'value = mean + threshold',
+            '1c': 'plot = seaborn.distplot(sd) \n'
+                  'plt.axvline(x=value)',
+            '1d': 'proteins = ["Contaminant_K1C10_HUMAN", "Contaminant_K22E_HUMAN", "Contaminant_K2C1_HUMAN", "Contaminant_TRYP_BOVIN"] \n'
+                  'protein_df = df_new.loc[df_new.index.isin(proteins)] \n'
+                  'std_df = protein_df.loc[:,\'1\':\'4\']'
+                  'std_df = std_df.transpose() \n'
+                  'boxplt = seaborn.boxplot(data=std_df) \n'
+                  'boxplt.set_ylabel(\'Protein Abundance\') \n'
+                  'plt.xticks(rotation=90)',
+            '2a': 'protein_df',
             '2b': 'string of answers',
             '2c': 'string of answers',
             '3': 'string of answers'
