@@ -1,5 +1,6 @@
 import pandas as pd
 import requests
+import numpy as np
 import os
 
 
@@ -110,9 +111,15 @@ class BIO465:
             temp_cols = df["index"].str.split('_', n=1, expand=True)
             plate_type = temp_cols[0]
             time_plate = temp_cols[1].str.split('.', n=1, expand=True)
-            df = df.assign(oxidation=plate_type, time=time_plate[0], plate=time_plate[1])
-            df = df.set_index(["Experimental Condition", "Time Point", "Replicate"])
+            df = df.assign(Experimental_Condition=plate_type, Time_Point=time_plate[0], Replicate=time_plate[1])
+            df = df.set_index(["Experimental_Condition", "Time_Point", "Replicate"])
             df = df.sort_index().transpose()
+            df = df.drop('index')
+            for column in df.columns:
+                df[column] = pd.to_numeric(df[column], downcast='integer')
+                df[column] = np.log(df[column])
+            df = df[~df.index.str.contains('XXX')]
+            df = df[~df.index.str.contains('Contaminant')]
         if lab_string == 'RNA Seq':
             file_type = ".txt"
             df = self.get_data_frame(lab_string, file_type)
@@ -125,28 +132,34 @@ class BIO465:
         hint_string = ""
         if lab_string == "bacterial growth":
             hint_string = self.growth_hints[problem_number]
-        if lab_string == "rna seq":
+        elif lab_string == "rna seq":
             print("coming soon...")
             pass  # TODO insert code for getting a hint
-        if lab_string == "rna seq":
+        elif lab_string == "rna seq":
             print("coming soon...")
             pass  # TODO insert code for getting a hint
+        else:
+            hint_string = f'{lab_string} is not a valid lab.'
         print(hint_string)
 
     def reveal_answer(self, lab_string, problem_number):
         answer_string = ""
         if lab_string == "bacterial growth":
             answer_string = self.growth_answers[problem_number]
-        if lab_string == "rna seq":
+        elif lab_string == "rna seq":
             print("coming soon...")
             pass  # TODO insert code for getting a answer
-        if lab_string == "rna seq":
+        elif lab_string == "rna seq":
             print("coming soon...")
+        else:
+            lab_string = f"{lab_string} is not a valid problem."
             pass  # TODO insert code for getting a answer
+
         print(answer_string)
 
 
 if __name__ == "__main__":
     b = BIO465()
-    # df = b.get_lab("bacterial growth")
+    df = b.get_lab("bacterial growth")
+    print(df)
     # comment line
